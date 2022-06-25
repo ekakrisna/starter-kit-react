@@ -1,9 +1,9 @@
-import { httpClient } from '../helpers/http-request';
-import { v4 as uuidv4 } from 'uuid';
+import { httpClient } from "../helpers/http-request";
+import { v4 as uuidv4 } from "uuid";
 
 const getTotalTodosApi = async (params) => {
   try {
-    const response = await httpClient().get('/todos', {
+    const response = await httpClient().get("/todos", {
       params: {
         ...params,
         _page: null,
@@ -19,7 +19,7 @@ const getTotalTodosApi = async (params) => {
 
 export const createTodoApi = async (text) => {
   try {
-    const response = await httpClient().post('/todos', {
+    const response = await httpClient().post("/todos", {
       id: uuidv4(),
       text: text,
       createdAtUnix: new Date().getTime(),
@@ -36,7 +36,7 @@ export const fetchTodosApi = async ({
   createdAt = [],
   page = 1,
   limit = 5,
-  status = '',
+  status = "",
 }) => {
   try {
     const params = {
@@ -45,16 +45,16 @@ export const fetchTodosApi = async ({
     };
 
     if (search.length > 0) {
-      params['text_like'] = search;
+      params["text_like"] = search;
     }
     if (createdAt.length === 2) {
       const [start, end] = createdAt;
 
-      params['createdAtUnix_gte'] = start;
-      params['createdAtUnix_lte'] = end;
+      params["createdAtUnix_gte"] = start;
+      params["createdAtUnix_lte"] = end;
     }
 
-    const response = await httpClient().get('/todos', {
+    const response = await httpClient().get("/todos", {
       params,
     });
 

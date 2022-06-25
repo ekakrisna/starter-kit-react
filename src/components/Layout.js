@@ -1,8 +1,8 @@
-import React from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
-import jsCookie from 'js-cookie';
-import { USER_CLEAR } from '../store/actions';
+import React from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import jsCookie from "js-cookie";
+import { USER_CLEAR } from "../store/actions";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -19,16 +19,16 @@ const Layout = ({ children }) => {
 
   const links = [
     {
-      path: '/home',
-      label: 'Home',
+      path: "/home",
+      label: "Home",
     },
     {
-      path: '/sample-redux',
-      label: 'Sample Redux',
+      path: "/sample-redux",
+      label: "Sample Redux",
     },
     {
-      path: '/sample-filter',
-      label: 'Sample Filter',
+      path: "/sample-filter",
+      label: "Sample Filter",
     },
   ];
 
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
     dispatch({
       type: USER_CLEAR,
     });
-    jsCookie.remove('accessToken');
+    jsCookie.remove("accessToken");
   };
 
   return (
@@ -50,8 +50,8 @@ const Layout = ({ children }) => {
                   to={linkItem.path}
                   className={`hover:text-white hover:bg-indigo-500 p-3  ${
                     pathname.startsWith(linkItem.path)
-                      ? 'bg-indigo-500 text-white'
-                      : 'text-gray-900'
+                      ? "bg-indigo-500 text-white"
+                      : "text-gray-900"
                   }`}
                 >
                   {linkItem.label}

@@ -1,13 +1,13 @@
-import Routes from './routes';
+import Routes from "./routes";
 
-import { Provider } from 'react-redux';
-import store from './store/index';
+import { Provider } from "react-redux";
+import store from "./store/index";
 
-import './styles/index.scss';
-import 'antd/dist/antd.min.css';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
+import "./styles/index.scss";
+import "antd/dist/antd.min.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 const queryClient = new QueryClient({
   defaultOptions: {

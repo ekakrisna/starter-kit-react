@@ -1,4 +1,4 @@
-import { USER_CLEAR, USER_LOGGED_IN, USER_UPDATE_DATA } from '../actions';
+import { USER_CLEAR, USER_LOGGED_IN, USER_UPDATE_DATA } from "../actions";
 const initialState = {
   accessToken: null,
   data: null,

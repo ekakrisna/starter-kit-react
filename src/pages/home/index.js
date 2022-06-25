@@ -1,9 +1,9 @@
-import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
-import Layout from '../../components/Layout';
-import UserEdit from './components/UserEdit';
-import FormUpload from './components/FormUpload';
-import FormCommon from './components/FormCommon';
+import React from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import Layout from "../../components/Layout";
+import UserEdit from "./components/UserEdit";
+import FormUpload from "./components/FormUpload";
+import FormCommon from "./components/FormCommon";
 
 const HomePage = () => {
   const { userData } = useSelector(

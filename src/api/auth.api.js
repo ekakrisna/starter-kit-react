@@ -1,7 +1,7 @@
 const fakeGetAccessToken = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      return resolve('this-is-exampleofaccessTokennlqwjekr-asdfkqqwklerg');
+      return resolve("this-is-exampleofaccessTokennlqwjekr-asdfkqqwklerg");
     }, 900);
   });
 

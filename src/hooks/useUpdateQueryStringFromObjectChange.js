@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import qs from 'query-string';
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import qs from "query-string";
 
 const useUpdateQueryStringFromObjectChange = (object) => {
   const { pathname, search } = useLocation();
@@ -17,11 +17,11 @@ const useUpdateQueryStringFromObjectChange = (object) => {
       if (keys.includes(key)) {
         delete searches[key];
         const current = object[key];
-        if (['string', 'number'].includes(typeof current) && !!current) {
+        if (["string", "number"].includes(typeof current) && !!current) {
           searches[key] = current;
         }
         if (Array.isArray(current) && current.length > 0) {
-          searches[key] = current.join(',');
+          searches[key] = current.join(",");
         }
       }
     });

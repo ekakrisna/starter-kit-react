@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter,
   Routes as ReactRoutes,
   Route,
   Navigate,
-} from 'react-router-dom';
-import HomePage from '../pages/home';
-import SampleReduxPage from '../pages/sample-redux';
-import SampleFilterPage from '../pages/sample-filter';
-import LoginPage from '../pages/login';
+} from "react-router-dom";
+import HomePage from "../pages/home";
+import SampleReduxPage from "../pages/sample-redux";
+import SampleFilterPage from "../pages/sample-filter";
+import LoginPage from "../pages/login";
 
 const Routes = () => {
   return (

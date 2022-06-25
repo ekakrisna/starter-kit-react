@@ -3,7 +3,7 @@ import {
   COUNTER_DECREMENT_WITH_VALUE,
   COUNTER_INCREMENT,
   COUNTER_INCREMENT_WITH_VALUE,
-} from '../actions';
+} from "../actions";
 
 const initialState = 0;
 
