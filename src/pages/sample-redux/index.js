@@ -1,14 +1,14 @@
-import { Button, Input } from 'antd';
-import React, { useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import Layout from '../../components/Layout';
+import { Button, Input } from "antd";
+import React, { useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import Layout from "../../components/Layout";
 import {
   COUNTER_DECREMENT,
   COUNTER_DECREMENT_WITH_VALUE,
   COUNTER_INCREMENT,
   COUNTER_INCREMENT_WITH_VALUE,
-} from '../../store/actions';
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+} from "../../store/actions";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 
 const SampleReduxPage = () => {
   const { counter } = useSelector(

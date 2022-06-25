@@ -1,11 +1,11 @@
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Modal, Upload as UploadAntd } from 'antd';
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { Modal, Upload as UploadAntd } from "antd";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
+  reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
 };
 
@@ -14,8 +14,8 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
   const [fileList, setFileList] = useState([]);
 
   const [previewVisible, setPreviewVisible] = useState(false);
-  const [previewImage, setPreviewImage] = useState('');
-  const [previewTitle, setPreviewTitle] = useState('');
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("");
 
   useEffect(() => {
     setFileList(files);
@@ -33,15 +33,16 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
       setLocalLoading(true);
       const uploadResult = await onUpload(file);
 
-      console.log('upoadResult', uploadResult);
+      console.log("upoadResult", uploadResult);
     } catch (error) {
+      console.log(error);
     } finally {
       setLocalLoading(false);
     }
   };
 
   const handlePreview = async (file) => {
-    console.log('handlePreview', file);
+    console.log("handlePreview", file);
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -49,7 +50,7 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
     setPreviewImage(file.url || file.preview);
     setPreviewVisible(true);
     setPreviewTitle(
-      file.name || file.url?.substring(file.url?.lastIndexOf('/') + 1)
+      file.name || file.url?.substring(file.url?.lastIndexOf("/") + 1)
     );
   };
 
@@ -64,7 +65,7 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
         onRemove={onDelete}
         accept={accept}
       >
-        {fileList.length ? '' : uploadButton}
+        {fileList.length ? "" : uploadButton}
       </UploadAntd>
       <Modal
         visible={previewVisible}
@@ -72,7 +73,7 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
         footer={null}
         onCancel={() => setPreviewVisible(false)}
       >
-        <img alt="example" style={{ width: '100%' }} src={previewImage} />
+        <img alt="example" style={{ width: "100%" }} src={previewImage} />
       </Modal>
     </>
   );
@@ -93,7 +94,7 @@ Upload.defaultProps = {
   onUpload: () => {},
   onDelete: () => {},
   onChange: () => {},
-  accept: '',
+  accept: "",
 };
 
 export default Upload;

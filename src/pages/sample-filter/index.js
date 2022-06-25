@@ -1,17 +1,17 @@
-import { Button, DatePicker, Input, Modal, Pagination, Table } from 'antd';
-import React, { useMemo, useState } from 'react';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { Button, DatePicker, Input, Modal, Pagination, Table } from "antd";
+import React, { useMemo, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   fetchTodosApi,
   removeTodoApi,
   toggleCompleteTodoApi,
-} from '../../api/todo.api';
-import Layout from '../../components/Layout';
-import TodoForm from './components/TodoForm';
-import { getValueFromQueryString } from '../../helpers/commons';
-import { useLocation } from 'react-router-dom';
-import useUpdateQueryStringFromObjectChange from '../../hooks/useUpdateQueryStringFromObjectChange';
-import moment from 'moment';
+} from "../../api/todo.api";
+import Layout from "../../components/Layout";
+import TodoForm from "./components/TodoForm";
+import { getValueFromQueryString } from "../../helpers/commons";
+import { useLocation } from "react-router-dom";
+import useUpdateQueryStringFromObjectChange from "../../hooks/useUpdateQueryStringFromObjectChange";
+import moment from "moment";
 
 const getInitialFilter = (value) => {
   const { search, page, createdAt, limit } = value;
@@ -19,8 +19,8 @@ const getInitialFilter = (value) => {
   return {
     page: page ? Number(page) : 1,
     limit: limit ? Number(limit) : 5,
-    search: search ? String(search) : '',
-    createdAt: createdAt ? createdAt.split(',') : [],
+    search: search ? String(search) : "",
+    createdAt: createdAt ? createdAt.split(",") : [],
   };
 };
 
@@ -30,7 +30,7 @@ const SampleFilterPage = () => {
   const { search } = useLocation();
 
   const valueFromQueryString = getValueFromQueryString(
-    ['search', 'page', 'limit', 'createdAt'],
+    ["search", "page", "limit", "createdAt"],
     search
   );
 
@@ -42,7 +42,7 @@ const SampleFilterPage = () => {
   const [selectedTodoToEdit, setSelectedTodoToEdit] = useState(null);
 
   const queryTodos = useQuery(
-    ['query-todos', filter],
+    ["query-todos", filter],
     () =>
       fetchTodosApi({
         search: filter.search,
@@ -67,50 +67,50 @@ const SampleFilterPage = () => {
   });
 
   const refreshData = () => {
-    queryClient.removeQueries(['query-todos', filter], { exact: true });
-    queryClient.cancelQueries(['query-todos', filter]);
+    queryClient.removeQueries(["query-todos", filter], { exact: true });
+    queryClient.cancelQueries(["query-todos", filter]);
     queryTodos.refetch();
   };
 
   const columns = useMemo(() => {
     return [
       {
-        dataIndex: 'id',
-        title: 'ID',
+        dataIndex: "id",
+        title: "ID",
         width: 180,
         render: (value) => {
           return <div className="">{value}</div>;
         },
       },
       {
-        dataIndex: 'text',
-        title: 'Todo Text',
+        dataIndex: "text",
+        title: "Todo Text",
         width: 200,
         render: (value) => {
           return <div>{value}</div>;
         },
       },
       {
-        dataIndex: 'status',
-        title: 'Status',
+        dataIndex: "status",
+        title: "Status",
         width: 200,
         render: (value, row) => {
-          return <div>{row.isComplete ? 'complete' : 'peding'}</div>;
+          return <div>{row.isComplete ? "complete" : "peding"}</div>;
         },
       },
       {
-        dataIndex: 'createdAtUnix',
-        title: 'Created At',
+        dataIndex: "createdAtUnix",
+        title: "Created At",
         width: 200,
         render: (value) => {
-          return <div>{new Date(value).toLocaleString('ID-id')}</div>;
+          return <div>{new Date(value).toLocaleString("ID-id")}</div>;
         },
       },
       {
-        dataIndex: 'action',
-        title: 'Action',
+        dataIndex: "action",
+        title: "Action",
         width: 120,
-        fixed: 'right',
+        fixed: "right",
         render: (value, row) => {
           return (
             <div className="flex flex-col gap-2">
@@ -206,7 +206,7 @@ const SampleFilterPage = () => {
                   defaultValue={filter.createdAt.map((unix) =>
                     moment(new Date(Number(unix)))
                   )}
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                 />
               </div>
             </div>

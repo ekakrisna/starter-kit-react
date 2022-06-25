@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Button, Form, Input } from 'antd';
-import { useMutation } from 'react-query';
-import { createTodoApi, updateTodoApi } from '../../../api/todo.api';
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { Button, Form, Input } from "antd";
+import { useMutation } from "react-query";
+import { createTodoApi, updateTodoApi } from "../../../api/todo.api";
 
 const TodoForm = ({ data, onSuccess }) => {
   const [form] = Form.useForm();
@@ -33,7 +33,7 @@ const TodoForm = ({ data, onSuccess }) => {
           onSuccess: (data) => {
             onSuccess(data);
             form.setFieldsValue({
-              text: '',
+              text: "",
             });
           },
         }

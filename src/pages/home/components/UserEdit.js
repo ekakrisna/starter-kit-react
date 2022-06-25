@@ -1,10 +1,10 @@
-import { Button, Form, Input } from 'antd';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useMutation } from 'react-query';
-import { updateUserApi } from '../../../api/user.api';
-import { useDispatch } from 'react-redux';
-import { USER_UPDATE_DATA } from '../../../store/actions';
+import { Button, Form, Input } from "antd";
+import React from "react";
+import PropTypes from "prop-types";
+import { useMutation } from "react-query";
+import { updateUserApi } from "../../../api/user.api";
+import { useDispatch } from "react-redux";
+import { USER_UPDATE_DATA } from "../../../store/actions";
 
 const UserEdit = ({ data }) => {
   const [form] = Form.useForm();
@@ -37,7 +37,9 @@ const UserEdit = ({ data }) => {
             },
           });
         },
-        onError: (error) => {},
+        onError: (error) => {
+          console.log(error);
+        },
       }
     );
   };
@@ -63,7 +65,7 @@ const UserEdit = ({ data }) => {
         <Form.Item
           name="email"
           label="Email"
-          rules={[{ type: 'email', required: true }]}
+          rules={[{ type: "email", required: true }]}
         >
           <Input />
         </Form.Item>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Upload from '../../../components/Upload';
-import { getBase64 } from '../../../helpers/commons';
+import React, { useState } from "react";
+import Upload from "../../../components/Upload";
+import { getBase64 } from "../../../helpers/commons";
 
 const FormUpload = () => {
   const [file, setFile] = useState(null);
