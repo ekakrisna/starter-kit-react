@@ -8,6 +8,7 @@ import {
 import HomePage from "../pages/home";
 import SampleReduxPage from "../pages/sample-redux";
 import SampleFilterPage from "../pages/sample-filter";
+import SampleButtonPage from "../pages/sample-button";
 import LoginPage from "../pages/login";
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/sample-redux" element={<SampleReduxPage />} />
         <Route path="/sample-filter" element={<SampleFilterPage />} />
+        <Route path="/sample-button" element={<SampleButtonPage />} />
       </ReactRoutes>
     </BrowserRouter>
   );

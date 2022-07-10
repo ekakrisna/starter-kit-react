@@ -2,6 +2,7 @@ import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { Modal, Upload as UploadAntd } from "antd";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { pushNotif } from "../helpers/notification";
 
 const getBase64 = (img, callback) => {
   const reader = new FileReader();
@@ -12,6 +13,7 @@ const getBase64 = (img, callback) => {
 const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
   const [localLoading, setLocalLoading] = useState(loading);
   const [fileList, setFileList] = useState([]);
+  const [getfile, setFile] = useState({});
 
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
@@ -30,10 +32,11 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
 
   const handleCustomRequest = async ({ file }) => {
     try {
+      setFile(file);
       setLocalLoading(true);
       const uploadResult = await onUpload(file);
-
       console.log("upoadResult", uploadResult);
+      pushNotif("success", "This is a success message");
     } catch (error) {
       console.log(error);
     } finally {
@@ -46,7 +49,7 @@ const Upload = ({ files, loading, onUpload, onDelete, onChange, accept }) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
-
+    file.name = getfile.name;
     setPreviewImage(file.url || file.preview);
     setPreviewVisible(true);
     setPreviewTitle(

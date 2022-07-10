@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Checkbox, Form, Input } from "antd";
 import React from "react";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
@@ -57,14 +57,89 @@ const LoginPage = () => {
     );
   };
 
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div className="max-w-screen-md mx-auto">
-      <div className="flex w-full justify-center pt-8">
-        <div>
-          <div className="text-lg font-bold mb-3">Login Page</div>
-          <Button loading={mutationLogin.isLoading} onClick={handleLogin}>
-            Get Access Token | Login
-          </Button>
+      <div className="flex w-full justify-center items-center min-h-[100vh]">
+        <div className="block">
+          <div className="pb-8 text-center">
+            <div className="text-lg font-bold mb-3">Login Page</div>
+            <Button loading={mutationLogin.isLoading} onClick={handleLogin}>
+              Get Access Token | Login
+            </Button>
+          </div>
+          <div>
+            <Form
+              name="basic"
+              labelCol={{
+                span: 8,
+              }}
+              wrapperCol={{
+                span: 16,
+              }}
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+            >
+              <Form.Item
+                label="Username"
+                name="username"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                  },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+
+              <Form.Item
+                name="remember"
+                valuePropName="checked"
+                wrapperCol={{
+                  offset: 8,
+                  span: 16,
+                }}
+              >
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+
+              <Form.Item
+                wrapperCol={{
+                  offset: 8,
+                  span: 16,
+                }}
+              >
+                <Button type="primary" htmlType="submit">
+                  Submit
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
         </div>
       </div>
     </div>

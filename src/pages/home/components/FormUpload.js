@@ -24,6 +24,7 @@ const FormUpload = () => {
       <Upload
         files={file ? [file] : []}
         onDelete={(e) => {
+          console.log(e);
           setFile(null);
         }}
         onUpload={handleUpload}

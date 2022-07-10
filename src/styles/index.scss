@@ -4,6 +4,10 @@
 
 @import "tailwindcss/utilities";
 
+@import "configs/import";
+
+@import "components/import";
+
 svg {
   vertical-align: baseline;
 }
